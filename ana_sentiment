@@ -1,29 +1,5 @@
 #!/usr/bin/python
 
-"""
-#from test import testEqual
-from pythonds.basic.stack import Stack
-
-def revstring(mystr):
-    s = Stack()
-    rev = []
-    #print len(mystr)
-    for i in range(0, len(mystr)):
-        s.push(mystr[i])
-    #print s.size()
-    for j in range(0, s.size()):
-        rev.append(s.pop())
-    return ''.join(rev)
-
-print revstring('1234567890')
-"""
-
-"""
-testEqual(revstring('apple'),'elppa')
-testEqual(revstring('x'),'x')
-testEqual(revstring('1234567890'),'0987654321')
-"""
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as pl
@@ -37,7 +13,6 @@ def dataparse(rev_line, scores):
     score1 = 0
     textlist = []
     textlist = rev_line.split()
-    #print textlist
     for item in textlist:
         itemlower = item.lower()
         if itemlower in scores:
@@ -50,7 +25,7 @@ def dataparse(rev_line, scores):
 def main():
     
     # run code as
-    # python test_1.py <sentiment txt file> <review CSV file>
+    # $python test_1.py <sentiment txt file> <review CSV file>
     
     # get CSV file into Panads data frame
     df = pd.read_csv(sys.argv[2], header=None)
@@ -68,7 +43,6 @@ def main():
     #lines(sent_file)
 
 # iterate over reviews and score each, saving counts of each score in a dictionary
-    #for i in range(1,100):
     for i in range(df.shape[0]):
         rev_line = df[5][i]
         if type(rev_line) is not str:
@@ -83,7 +57,6 @@ def main():
     #pl.figure()
     pl.plot(scoredict.keys(), scoredict.values())
     #pl.hist(scoredict.keys(), scoredict.values(), bins=np.arange(min(scoredict.keys()), max(scoredict.keys()) + 5, 5))
-    #pl.hist(scoredict.keys(), bins=20)
     pl.show()
 
 if __name__ == '__main__':
